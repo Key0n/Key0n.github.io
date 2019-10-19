@@ -1,0 +1,16 @@
+#pageHeader { 
+    font-size: 120%;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: rgb(252, 252, 252);
+    background-color: rgb(102, 19, 19); 
+    top: 70px; 
+    left: 70px;
+    position: relative;
+   }
+
+#color {
+    background-color: rgb(31, 31, 31);
+}
+.fig {
+float:  right;
+}

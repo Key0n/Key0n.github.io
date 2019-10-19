@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>зАЛУПКА</title>
+    <script title="text/javascript">
+        function valid(form) {
+            var fail = false;
+            var name = form.name.value;
+            var password = form.password.value;
+            var RePassword = form.RePassword.value;
+            var email = form.email.value;
+            var state = form.state.value;
+            var adr_pattern = /[0-9a-z_-]+@[0-9a-z_-]+\.[a-z]{2,5}/i;
+            if (name == "" || name == " ")
+                fail = "Сука, наебал! Не ввёл своё имя!";
+            else if (password == "")
+                fail = "Сука, наебал! Не ввёл пароль!";
+            else if (RePassword == "")
+                fail = "Хочешь открою тебе тайну? - Ты приёмный! Ахаха, шучу. Ты проосто не ввёл повторный пароль)";
+            else if (password != RePassword)
+                fail = "Пароль не совпадает, бестолочь!";
+            else if (adr_pattern.test(email) == false)
+                fail = "Сука, наебал! Не ввёл не правильно Email!";
+            else if (state == "")
+                fail = "О! Вы трап!)";
+            if (fail)
+                alert(fail);
+            else window.location = "state.html";
+
+        }
+    </script>
+</head>
+
+<body>
+
+    <form action="" method="post" name="test" id="form">
+        <label for="name">Имя : </label>
+        <input type="text" name="name" placeholder="Имя" id="name" /> <br />
+        <label for="password"> Пароль : </label>
+        <input type="password" name="password" placeholder="Пароль" id="password" /> <br />
+        <label for="RePassword"> Проверка пароля : </label>
+        <input type="password" name="RePassword" placeholder="Введите пароль" id="RePassword" /> <br />
+        <label for="email">Email : </label>
+        <input type="text" name="email" placeholder="Email" id="email" /> <br />
+        <span for="state"> Пол: </span>
+        <input type="radio" name="state" id="male" value="Мужской" /> <label for="male">Мужской</label>
+        <input type="radio" name="state" id="female" value="Женский" /> <label for="female">Женский</label> <br />
+        <input type="button" onclick="valid(document.getElementById('form'))" value="Готово" />
+    </form>
+</body>
+
+</html>
