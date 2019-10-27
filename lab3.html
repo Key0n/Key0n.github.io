@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 3</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="lab3.js" type="text/javascript"></script>
+    <style type="text/css">
+        body {
+            background-color: rgba(0, 0, 0, 0.83)
+        }
+
+        label, a, p, li {
+            color: white;
+        }
+
+        .left {
+            display: inline;
+            float: left;
+        }
+
+        .right {
+            display: inline;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<p><a href="index.html">Назад</a></p>
+<div class="left">
+    <label for="last_name">Имя Студента</label>
+    <input type="text" id="last_name">
+    <br>
+    <button id="submit">Добавить</button>
+</div>
+
+<div class="right">
+    <p>Список студентов:</p>
+    <p>Отличник:</p>
+    <ul id="excellent">
+    </ul>
+    <p>Хорошист:</p>
+    <ul id="good-looking">
+    </ul>
+    <p>Неуспевающий:</p>
+    <ul id="underperforming">
+    </ul>
+</div>
+</body>
+</html>
