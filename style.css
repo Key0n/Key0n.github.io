@@ -1,16 +1,80 @@
-#pageHeader { 
+#pageHeader {
     font-size: 120%;
     font-family: Verdana, Arial, Helvetica, sans-serif;
     color: rgb(252, 252, 252);
-    background-color: rgb(102, 19, 19); 
-    top: 70px; 
+    background-color: rgb(102, 19, 19);
+    top: 70px;
     left: 70px;
     position: relative;
-   }
+}
 
 #color {
     background-color: rgb(31, 31, 31);
 }
+
 .fig {
-float:  right;
+    float: right;
+}
+
+div, li, p, a {
+    color: white;
+}
+
+.tabs {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.tabs:after {
+    content: "";
+    clear: both;
+    display: block;
+    height: 240px;
+}
+
+.tabs li {
+    float: left;
+}
+
+.tabs li > input {
+    display: none;
+}
+
+.tabs li > label {
+    display: inline-block;
+    border: 1px solid #999;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    height: 30px;
+    line-height: 30px;
+    padding: 5px 20px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.tabs li:last-child > label {
+    border-right-width: 1px;
+}
+
+.tabs .tab-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    padding: 20px;
+    border: 1px solid #999;
+    height: 200px;
+    overflow-y: auto;
+}
+
+.tabs li > input:checked + label {
+    background-color: #999;
+}
+
+.tabs li > input:checked ~ .tab-content {
+    display: block;
 }
