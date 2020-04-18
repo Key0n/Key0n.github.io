@@ -31,7 +31,6 @@
     try {
         $dbh = new PDO($dsn, $username, $password, $options);
         $date = $_POST['date'];
-        $date = '2014-09-01';
 
         print "$date <br><br>";
         $sql = "SELECT SUM(cost) as price FROM rent WHERE '$date' BETWEEN Date_start and Date_end";
