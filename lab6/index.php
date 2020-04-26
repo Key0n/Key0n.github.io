@@ -28,9 +28,9 @@
             <td>
             <form action="by_date.php" method="post">
                 <label for="start">Start</label>
-                <input type="date" name="start">
+                <input type="date" name="start"><br>
                 <label for="end">End</label>
-                <input type="date" name="end">
+                <input type="date" name="end"><br>
                 <button type="submit">Submit</button>
                 </form>
             </td>
