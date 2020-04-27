@@ -14,7 +14,14 @@
         input {
             margin: 5px;
         }
+        a {
+            color: white;
+        } 
+        .hiden {
+            display: none;
+        }
     </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 
 <body>
@@ -32,6 +39,9 @@
                 <label for="end">End</label>
                 <input type="date" name="end"><br>
                 <button type="submit">Submit</button>
+                <a id="last_mark" style="display: none" href="#">Show last</a>
+                    <ul id="mark_list">
+                    </ul>
                 </form>
             </td>
             <td>
@@ -39,6 +49,9 @@
                 <label for="mileage">Mileage</label>
                 <input type="number" name="mileage" id="mileage">
                 <button type="submit">Submit</button>
+                <a id="last_mileage" style="display: none" href="#">Show last</a>
+                    <ul id="mileage_lat">
+                    </ul>
                 </form>
             </td>
             <td>
@@ -60,6 +73,45 @@
             </td>
         </tr>
     </table>
+    <script>
+        $(document).ready(function() {
+            if(localStorage.getItem('mark_list') !== null) {
+                $('#last_mark').css('display', 'block');
+            }
+
+            if(localStorage.getItem('mileage') !== null) {
+                $('#last_mileage').css('display', 'block');
+            }
+
+            $('#last_mark').click(function() {
+                let mark_list = $('#mark_list');
+                if(!mark_list.children().length) {
+                    mark_list.html(localStorage.getItem('mark_list'));
+                    $(this).html('Hide');
+                } else if(mark_list.hasClass('hiden')) {
+                    mark_list.removeClass('hiden');
+                    $(this).html('Hide');
+                } else {
+                    mark_list.addClass('hiden');
+                    $(this).html('Show last');
+                }
+            });
+
+            $('#last_mileage').click(function() {
+                let mileage_lat = $('#mileage_lat');
+                if(!mileage_lat.children().length) {
+                    mileage_lat.html(localStorage.getItem('mileage'));
+                    $(this).html('Hide');
+                } else if(mileage_lat.hasClass('hiden')) {
+                    mileage_lat.removeClass('hiden');
+                    $(this).html('Hide');
+                } else {
+                    mileage_lat.addClass('hiden');
+                    $(this).html('Show last');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

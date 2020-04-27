@@ -15,32 +15,39 @@
             margin: 5px;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 
 <body>
-<?php
-    require_once __DIR__ . "/vendor/autoload.php";
-    $start = $_POST['start'];
-    $end = $_POST['end'];
-    echo $start . ' - ' . $end . '<br>';
+<ul id="mark_list">
+    <?php
+        require_once __DIR__ . "/vendor/autoload.php";
+        $start = $_POST['start'];
+        $end = $_POST['end'];
+        $format_start = strtotime($start);
+        $format_end = strtotime($end);
 
-    $format_start = strtotime($start);
-    $format_end = strtotime($end);
-    echo $format_start . ' - ' . $format_end . '<br>';
-
-    try {
-        $collection = (new MongoDB\Client)->itech_var6->rent;
-        $startQuery = array('start' => array( '$gte' => (int)$start));
-        $endQuery = array('end' => array('$lte' => (int)$end));
-        $query = array('$and' => array($startQuery, $endQuery));
-        $cursor = $collection->find($query);
-        foreach ($cursor as $doc) {
-            echo $doc['mark'] . "<br>";
+        try {
+            $collection = (new MongoDB\Client)->itech_var6->rent;
+            $startQuery = array('start' => array( '$gte' => (int)$start));
+            $endQuery = array('end' => array('$lte' => (int)$end));
+            $query = array('$and' => array($startQuery, $endQuery));
+            $cursor = $collection->find($startQuery);
+            foreach ($cursor as $doc) {
+                $mark = $doc['mark'];
+                echo "<li>$mark</li>";
+            }
+        } catch (PDOException $e) {
+            echo $e;
         }
-    } catch (PDOException $e) {
-        echo $e;
-    }
     ?>
+    </ul>
+    <script>
+        $(document).ready(function() {
+            localStorage.mark_list = $('#mark_list').html();
+        });
+        </script>
+</body>
 </body>
 
 </html>
